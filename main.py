@@ -4,6 +4,7 @@ from gql.transport.requests import RequestsHTTPTransport
 import requests
 import json
 import sys
+import os
 
 ids_file = sys.argv[1]
 
@@ -23,7 +24,7 @@ for id in data['ids']:
       retries=3,
       transport=RequestsHTTPTransport(
           url='https://origin-staging-content-api.gannettdigital.com/authoring',
-          headers={'x-sitecode': 'USAT', 'x-api-key': ''},
+          headers={'x-sitecode': 'USAT', 'x-api-key': os.environ['CONTENT_API_KEY']},
       )
   )
 
